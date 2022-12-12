@@ -52,6 +52,7 @@ class userCre(BaseModel):
     email:EmailStr
     username:str
     password:str
+    phone_number:str
 
 
 class UserLogin(BaseModel):

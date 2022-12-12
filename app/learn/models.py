@@ -25,7 +25,8 @@ class Post(Base):
 
     owner_id=Column(Integer,ForeignKey("users.id",ondelete="CASCADE"),nullable=False)
 
-    owner_data = relationship("users")
+#create relationship to return a class of alchemy(user) class below 
+    owner_data = relationship("user")
 
 
 class user(Base):
@@ -41,7 +42,7 @@ class user(Base):
 
     created_at =Column(TIMESTAMP(timezone=True),nullable=False,server_default=text('now()'))
 
-    phone_number=Column(Integer,nullable=False,unique= True)
+    phone_number=Column(String,nullable=False,unique=True)
 
 class Votes(Base):
     __tablename__ = "Votes"
