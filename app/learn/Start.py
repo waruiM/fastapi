@@ -5,7 +5,31 @@ from .routers import post,users,auth,vote
 from .config import settings
 from fastapi.middleware.cors import CORSMiddleware
 
-print(settings.database_hostname)
+
+app = FastAPI()
+
+origins = [
+    "http://localhost.tiangolo.com",
+    "https://localhost.tiangolo.com",
+    "http://localhost",
+    "http://localhost:8080",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
+@app.get("/")
+async def main():
+    return {"message": "Hello World"}
+
+
+#print(settings.database_hostname)
 
 ###code to instract sqlalchemy to generte the tables on start up
 ##however a we have alembic it is not required
@@ -35,3 +59,6 @@ app.include_router(users.router)
 app.include_router(auth.router)
 app.include_router(vote.router)
 
+@app.get("/")
+def root():
+    return{"message":"success"}

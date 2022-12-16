@@ -1,1 +1,1 @@
-bot:python app.learn.Start
+web:python app.learn.Start
