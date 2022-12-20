@@ -1,1 +1,1 @@
-web:python app.learn.Start
+web:uvicorn app.learn.Start:app --host=0.0.0.0 --port=${PORT:-5000}
